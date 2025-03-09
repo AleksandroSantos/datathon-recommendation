@@ -1,18 +1,20 @@
-# Usar uma imagem base do Python
+# Usa uma imagem base do Python 3.9
 FROM python:3.9-slim
 
-# Definir diretório de trabalho
+# Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
 
-# Copiar requirements e instalar dependências
+# Copia o arquivo de dependências para o contêiner
 COPY requirements.txt .
+
+# Instala as dependências do projeto
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar o código fonte
+# Copia todo o código do projeto para o contêiner
 COPY . .
 
-# Expor a porta da API
-EXPOSE 5000
+# Expõe a porta 8000 (a mesma que a API usa)
+EXPOSE 8000
 
-# Comando para rodar a API
-CMD ["uvicorn", "src.api.app:app", "--host", "0.0.0.0", "--port", "5000"]
+# Comando para rodar a API quando o contêiner for iniciado
+CMD ["uvicorn", "src.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
