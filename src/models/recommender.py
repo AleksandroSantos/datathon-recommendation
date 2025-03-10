@@ -47,10 +47,10 @@ class NewsRecommendationSystem:
     def _handle_missing_data(self) -> None:
         """Trata dados ausentes nas colunas críticas."""
         logger.info("Tratando dados ausentes...")
-        self.news_df["title"].fillna("", inplace=True)
-        self.news_df["body"].fillna("", inplace=True)
-        self.news_df["caption"].fillna("", inplace=True)
-        self.user_df["history"].fillna("", inplace=True)
+        self.news_df["title"] = self.news_df["title"].fillna("")
+        self.news_df["body"] = self.news_df["body"].fillna("")
+        self.news_df["caption"] = self.news_df["caption"].fillna("")
+        self.user_df["history"] = self.user_df["history"].fillna("")
 
     def prepare_data(self) -> None:
         """Prepara os dados para recomendação."""

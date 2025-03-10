@@ -48,24 +48,6 @@ Este projeto foi desenvolvido para atender aos seguintes objetivos principais:
 ---
 
 
-## Sumário
-
-- [Sistema de Recomendação de Notícias do G1](#sistema-de-recomendação-de-notícias-do-g1)
-  - [Técnicas de NLP Utilizadas](#técnicas-de-nlp-utilizadas)
-  - [Objetivos do Projeto](#objetivos-do-projeto)
-  - [Sumário](#sumário)
-  - [Requisitos](#requisitos)
-  - [Instalação](#instalação)
-  - [Instalação](#instalação-1)
-    - [1. Executando Localmente](#1-executando-localmente)
-    - [2. Executando com Docker](#2-executando-com-docker)
-  - [Estrutura do Projeto](#estrutura-do-projeto)
-  - [Endpoints da API](#endpoints-da-api)
-  - [Empacotamento com Docker](#empacotamento-com-docker)
-  - [Testes](#testes)
-
----
-
 ## Requisitos
 
 Antes de começar, certifique-se de que você tem os seguintes requisitos instalados:
@@ -96,6 +78,20 @@ Siga os passos abaixo para configurar o projeto em sua máquina:
    ```bash
    pip install -r requirements.txt
    ```
+
+4. Configure o PYTHONPATH (se necessário):
+Para garantir que o Python reconheça o diretório src como um pacote, adicione o diretório raiz do projeto ao PYTHONPATH:
+
+   - Linux/Mac:
+   ```bash
+   export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+   ```
+
+   - Windows:
+   ```bash
+   set PYTHONPATH=%PYTHONPATH%;%cd%
+   ```
+
 
 ## Instalação
 
@@ -154,6 +150,11 @@ A estrutura do projeto é organizada da seguinte forma:
    │       ├── config.py
    │       └── logger.py
    ├── tests/
+   │   ├── test_api.py
+   │   ├── test_data_downloader.py
+   │   ├── test_data_loader.py
+   │   ├── test_endpoints.py
+   │   └── testtest_recommender_api.py
    ├── data/
    ├── Dockerfile
    ├── docker-compose.yml
@@ -184,7 +185,7 @@ O projeto pode ser empacotado e executado usando Docker. Siga os passos abaixo:
 
 1. Construa a imagem Docker:
    ```bash
-   build -t news-recommender-api .
+   docker build -t news-recommender-api .
    ```
 
 2. Execute o contêiner:
