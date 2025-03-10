@@ -70,7 +70,7 @@ Siga os passos abaixo para configurar o projeto em sua máquina:
 
 2. Crie um ambiente virtual (opcional, mas recomendado):
    ```bash
-   python -m venv venv
+   python3 -m venv venv
    source venv/bin/activate  # No Windows, use `venv\Scripts\activate`
    ```
 
